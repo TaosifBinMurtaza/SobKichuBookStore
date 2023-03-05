@@ -1,0 +1,71 @@
+﻿@model SobKichuBookStore.Models.Product
+@{
+    ViewData["Title"] = "Upsert";
+}
+
+<h2 class="text-primary">@(Model.Id != 0 ? "Update" : "Create")  Product</h2>
+
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+
+					<input asp-for="Id" hidden />
+					<input asp-for="ImageUrl" hidden />
+
+	
+					<label asp-for="Name"></label>
+					<input asp-for="Name" class="form-control" />
+					<span asp-validation-for="Name" class="text-danger"></span>
+				
+					<label asp-for="Description"></label>
+					<textarea asp-for="Description" rows="3" class="form-control"></textarea>
+					<span asp-validation-for="Description" class="text-danger"></span>
+				
+				
+					<label asp-for="ISBN"></label>
+					<input asp-for="ISBN" class="form-control" />
+					<span asp-validation-for="ISBN" class="text-danger"></span>
+				
+					<label asp-for="Author"></label>
+					<input asp-for="Author" class="form-control" />
+					<span asp-validation-for="Author" class="text-danger"></span>
+				
+					<label asp-for="ListPrice"></label>
+					<input asp-for="ListPrice" class="form-control" />
+					<span asp-validation-for="ListPrice" class="text-danger"></span>
+				
+				
+					<label asp-for="Price"></label>
+					<input asp-for="Price" class="form-control" />
+					<span asp-validation-for="Price" class="text-danger"></span>
+				
+					<label asp-for="Price50"></label>
+					<input asp-for="Price50" class="form-control" />
+					<span asp-validation-for="Price50" class="text-danger"></span>
+				
+					<label asp-for="ImageUrl"></label>
+					<input type="file" id="uploadBox" name="file" class="form-control" />
+
+					<label asp-for="CategoryId"></label>
+					<select asp-for="CategoryId" asp-items="ViewBag.Category" class="form-select">
+					<option disabled selected>--Select Category--</option>
+					</select>
+					<span asp-validation-for="CategoryId" class="text-danger"></span>
+
+					<image src="@Model.ImageUrl"></image>
+			
+				<div class="col-12">
+					@if (Model.Id != 0)
+					{
+						<button type="submit" class="btn btn-primary" >Update</button>
+					}
+					else
+					{
+						<button type="submit"  class="btn btn-primary" >Create</button>
+					}
+					<a asp-controller="Product" asp-action="Index" class="btn btn-secondary" >
+						Back to List
+					</a>
+				</div>
+
+</form>
+

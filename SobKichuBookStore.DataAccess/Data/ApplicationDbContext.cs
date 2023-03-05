@@ -16,6 +16,7 @@ namespace SobKichuBookStore.DataAccess.Data
         }
 
         public DbSet<Category> Categories { set; get; }
+        public DbSet<Product> Products { set; get; }
 
     }
 }
