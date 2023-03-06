@@ -40,7 +40,10 @@ namespace SobKichuBookStore.DataAccess.Repository
         public T GetFisrtOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbset.Where(filter);
-
+            if (includeProperties != null)
+            {
+                query = query.Include(includeProperties);
+            }
             return query.FirstOrDefault();
            
         }
